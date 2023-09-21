@@ -18,25 +18,14 @@
     background: #1E1F23;
 }
 
-.StartRendering_TopBar {
-    display: flex;
-
-    width: auto;
-    height: 64px;
-
-    align-items: center;
-    margin-left : 22px;
-    margin-right : auto;
-}
-
 .StartRendering_TextBox_LayOut {
     display: flex;
     flex-direction: column;
 
-    margin-top : 18px;
+    margin-top : 82px;
     margin-left : 20px;
     margin-right : auto;
-    margin-bottom : 387px;
+    // margin-bottom : 387px;
 
     color: #FFF;
     font-family: Pretendard;
@@ -72,4 +61,12 @@
     font-weight: 600;
 
     margin : 0 auto;
+}
+
+.StartRendering_Img {
+    display: flex;
+    width: 178px;
+    height: 178px;
+
+    margin : 126px auto;
 }

@@ -12,9 +12,6 @@ const StartRendering = () => {
     return (
         <div className='StartRendering_Container'>
             <div className='StartRendering_Wrapper'>
-                <div className='StartRendering_TopBar'>
-                    <img src={Back} alt='Back' style={{width : '14px', height : '24px'}}/>
-                </div>
                 <div className='StartRendering_TextBox_LayOut'>
                     <div className='StartRendering_TextBox1'>양말의 짝을 구분해드려요!</div>
                     <div className='StartRendering_TextBox2'>화면 하단의 버튼을 이용해 촬영하기!</div>

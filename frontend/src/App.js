@@ -11,8 +11,8 @@ const App = () => {
       <Suspense fallback={<div>Loading</div>}>
           <Routes>
             <Route path='/' element={<StartPage />} />
-            <Route path='/main' element={<MainPage />} />
             <Route path='/camera' element={<CameraPage />} />
+            <Route path='/main' element={<MainPage />} />
           </Routes>
       </Suspense>
     </HashRouter>
