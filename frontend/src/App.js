@@ -3,6 +3,7 @@ import { HashRouter, Route, Routes } from "react-router-dom"
 
 const StartPage = lazy(() => import("./pages/StartPage"));
 const MainPage = lazy(() => import("./pages/MainPage"));
+const CameraPage = lazy(() => import("./pages/CameraPage"));
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<StartPage />} />
             <Route path='/main' element={<MainPage />} />
+            <Route path='/camera' element={<CameraPage />} />
           </Routes>
       </Suspense>
     </HashRouter>
