@@ -1,14 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Back from '../../../assets/MainPage/Back.svg'
+
 import Logo from '../../../assets/common/Logo.png'
 import '../../../styles/components/common/StartRendering.scss'
 
-const StartRendering = () => {
-    const navigate = useNavigate();
-    const onBtnClick = () => {
-        navigate('/camera')
-    }
+const StartRendering = ({onBtnClick}) => {
     return (
         <div className='StartRendering_Container'>
             <div className='StartRendering_Wrapper'>
