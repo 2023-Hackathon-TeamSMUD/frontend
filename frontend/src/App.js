@@ -3,7 +3,7 @@ import { HashRouter, Route, Routes } from "react-router-dom"
 
 const StartPage = lazy(() => import("./pages/StartPage"));
 const MainPage = lazy(() => import("./pages/MainPage"));
-const CameraPage = lazy(() => import("./pages/CameraPage"));
+const CameraPage = lazy(() => import("./component/container/CameraPage/CameraPageContainer"));
 
 const App = () => {
   return (

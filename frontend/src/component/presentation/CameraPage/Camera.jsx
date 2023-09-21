@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import ServerModal from '../../presentation/CameraPage/ServerModal';
 import Webcam from "react-webcam";
 import Aim from "../../../assets/CameraPage/Aim.svg";
@@ -10,38 +9,19 @@ import Progress1 from "../../../assets/CameraPage/Progress1.svg";
 import Progress2 from "../../../assets/CameraPage/Progress2.svg";
 import Progress3 from "../../../assets/CameraPage/Progress3.svg";
 import '../../../styles/components/CameraPage/Camera.scss'
-import ResultModal from './ResultModal';
+import ResultModalContainer from '../../container/CameraPage/ResultModalContainer';
 
 
 
-const Camera = () => {
-    const [captures, setCaptures] = useState([]);
-    const [showServerModal, setShowServerModal] = useState(false);
-    const [showResultModal, setShowResultModal] = useState(false);
+const Camera = ({
+    webcamRef, 
+    capturePhoto, 
+    captures, 
+    showServerModal, 
+    showResultModal, 
+    setShowResultModal
+}) => {
 
-    const webcamRef = React.useRef(null);
-
-    const capturePhoto = () => {
-        const imageSrc = webcamRef.current.getScreenshot();
-        setCaptures(prevState => [...prevState, imageSrc]);
-    };    
-
-    useEffect(() => {
-        let serverTimer, resultTimer;
-        if (captures.length === 2) {
-            setShowServerModal(true);
-            serverTimer = setTimeout(() => {
-                setShowServerModal(false);
-                setShowResultModal(true); // Show ResultModal right after ServerModal disappears
-            }, 3000);
-        }
-        return () => { 
-            clearTimeout(serverTimer); 
-            clearTimeout(resultTimer); // Clear both timers if the component unmounts
-        };
-    }, [captures]);
-    
-    
     return (
         <div className='Camera_Container'>
             <div className='Camera_Wrapper'>
@@ -77,7 +57,7 @@ const Camera = () => {
                         <img src={Progress3} alt='Progress3' className='Camera_Progress'/>
                     </>
                 }
-                {showResultModal && <ResultModal result = {1} setShowResultModal={setShowResultModal}/>}
+                {showResultModal && <ResultModalContainer result = {1} setShowResultModal={setShowResultModal}/>}
             </div>
         </div>
     );
