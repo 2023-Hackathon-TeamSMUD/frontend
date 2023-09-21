@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Notice = () => {
+const Skelethon = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Notice = () => {
     );
 };
 
-export default Notice;
+export default Skelethon;
