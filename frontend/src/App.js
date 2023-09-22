@@ -12,7 +12,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<StartPage />} />
             <Route path='/camera' element={<CameraPage />} />
-            <Route path='/main' element={<MainPage />} />
+            <Route path='/main/*' element={<MainPage />}/>
           </Routes>
       </Suspense>
     </HashRouter>

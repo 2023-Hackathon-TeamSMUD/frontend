@@ -11,6 +11,6 @@ export const datas = [
         content1 : '촬영한 양말에 맞는 코디를 추천드려요!',
         content2 : '화면 하단의 버튼을 이용해 촬영하기!',
         imgUrl : undefined,
-        link : ''
+        link : 'shot'
     },
 ]

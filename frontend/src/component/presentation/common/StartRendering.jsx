@@ -1,11 +1,13 @@
 import React from 'react';
+import Back from '../../../assets/MainPage/Back.svg';
 import '../../../styles/components/common/StartRendering.scss'
 
-const StartRendering = ({onBtnClick, type, datas}) => {
+const StartRendering = ({onBtnClick, type, datas, navigate}) => {
     return (
         <div className='StartRendering_Container'>
             <div className='StartRendering_Wrapper'>
-                <div className='StartRendering_TextBox_LayOut'>
+                {type === 1 && <img src={Back} alt='' className='StartRendering_Back' onClick={()=>navigate(-1)}/>}
+                <div className='StartRendering_TextBox_LayOut' style={type === 1 ? {marginTop : '22px'} : {marginTop : '82px'}}>
                     <div className='StartRendering_TextBox1'>{datas[type].content1}</div>
                     <div className='StartRendering_TextBox2'>{datas[type].content2}</div>
                 </div>

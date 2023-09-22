@@ -11,7 +11,7 @@ const StartRenderingContainer = ({type, step, setStep}) => {
         navigate(datas[type].link)
     }
     return (
-        <StartRendering datas={datas} onBtnClick={onBtnClick} step={step} type={type}/>
+        <StartRendering datas={datas} onBtnClick={onBtnClick} step={step} type={type} navigate={navigate}/>
     );
 };
 

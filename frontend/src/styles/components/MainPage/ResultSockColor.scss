@@ -1,4 +1,4 @@
-.StartRendering_Container {
+.ResultSockColor_Container {
     display: flex;
 
     width: 100%;
@@ -8,7 +8,7 @@
     margin : 0 auto;
 }
 
-.StartRendering_Wrapper {
+.ResultSockColor_Wrapper {
     display: flex;
     flex-direction: column;
 
@@ -18,39 +18,51 @@
     background: #1E1F23;
 }
 
-.StartRendering_Back {
-    width : 14px;
-    height : 24px;
+.ResultSockColor_Progress {
+    width: 370px;
+    height : 2px;
 
-    margin-top : 20px;
-    margin-left : 20px;
+    margin-top : 30px;
+    margin-left: auto;
     margin-right : auto;
 }
 
-.StartRendering_TextBox_LayOut {
+.ResultSockColor_TextBox_LayOut {
     display: flex;
     flex-direction: column;
 
+    margin-top : 50px;
     margin-left : 20px;
     margin-right : auto;
 
     color: #FFF;
     font-family: Pretendard;
 
-    .StartRendering_TextBox1 {
+
+    .ResultSockColor_TextBox1 {
         display: flex;
         width: 300px;
         font-size: 28px;
         font-weight: 700;
         margin-bottom: 20px;
     }
-    .StartRendering_TextBox2 {
+    .ResultSockColor_TextBox2 {
         font-size: 16px;
         font-weight: 400;
     }
 }
 
-.StartRendering_Btn {
+.ResultSockColor_ResultImg {
+    width: 220px;
+    height : 240px;
+
+    margin-top : 97px;
+    margin-bottom: 94px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.ResultSockColor_Btn {
     display: flex;
     width: 350px;
     height : 50px;
@@ -68,20 +80,4 @@
     font-weight: 600;
 
     margin : 0 auto;
-}
-
-.StartRendering_Img {
-    display: flex;
-    width: 178px;
-    height: 178px;
-
-    margin : 126px auto;
-}
-
-.StartRendering_Img_Undefined {
-    display: flex;
-    width: 178px;
-    height: 178px;
-
-    margin : 105px auto;
 }
