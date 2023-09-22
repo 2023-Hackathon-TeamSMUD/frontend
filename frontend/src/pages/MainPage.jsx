@@ -6,7 +6,7 @@ const StartRenderingContainer = lazy(() => import("../component/container/common
 const MainPage = () => {
     return (
         <Suspense fallback={<Skelethone/>}>
-            <StartRenderingContainer />
+            <StartRenderingContainer type={1}/>
         </Suspense>
     );
 };

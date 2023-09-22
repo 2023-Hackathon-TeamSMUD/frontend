@@ -1,17 +1,15 @@
 import React from 'react';
-
-import Logo from '../../../assets/common/Logo.png'
 import '../../../styles/components/common/StartRendering.scss'
 
-const StartRendering = ({onBtnClick}) => {
+const StartRendering = ({onBtnClick, type, datas}) => {
     return (
         <div className='StartRendering_Container'>
             <div className='StartRendering_Wrapper'>
                 <div className='StartRendering_TextBox_LayOut'>
-                    <div className='StartRendering_TextBox1'>양말의 짝을 구분해드려요!</div>
-                    <div className='StartRendering_TextBox2'>화면 하단의 버튼을 이용해 촬영하기!</div>
+                    <div className='StartRendering_TextBox1'>{datas[type].content1}</div>
+                    <div className='StartRendering_TextBox2'>{datas[type].content2}</div>
                 </div>
-                <img src={Logo} alt='' className='StartRendering_Img'/>
+                {datas[type].imgUrl ? <img src={datas[type].imgUrl} alt='' className='StartRendering_Img'/> : <div className='StartRendering_Img_Undefined'></div>}
                 <button className='StartRendering_Btn' onClick={onBtnClick}>촬영하기</button>
             </div>
         </div>

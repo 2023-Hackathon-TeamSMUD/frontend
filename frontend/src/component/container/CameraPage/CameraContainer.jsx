@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Camera from '../../presentation/CameraPage/Camera';
 
 const CameraContainer = () => {
     const [captures, setCaptures] = useState([]);
     const [showServerModal, setShowServerModal] = useState(false);
     const [showResultModal, setShowResultModal] = useState(false);
+    const navigate = useNavigate();
 
     const webcamRef = React.useRef(null);
 
@@ -41,6 +43,7 @@ const CameraContainer = () => {
             showServerModal={showServerModal}
             showResultModal={showResultModal}
             setShowResultModal={setShowResultModal}  
+            navigate={navigate}
         />
     );
 };
