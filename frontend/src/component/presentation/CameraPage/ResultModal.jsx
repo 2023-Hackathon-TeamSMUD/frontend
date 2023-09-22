@@ -3,7 +3,7 @@ import "../../../styles/components/CameraPage/resultModal.scss";
 import xicon from "../../../assets/CameraPage/xicon.webp"
 import oicon from "../../../assets/CameraPage/oicon.webp"
 
-const ResultModal = ({ result, setShowResultModal, handleCloseModal, handleRestartCamera}) => {
+const ResultModal = ({ result, handleCloseModal, handleRestartCamera}) => {
 
   return (
     <div className="modalContainer">

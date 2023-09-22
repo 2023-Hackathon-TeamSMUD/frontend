@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../../../styles/components/MainPage/SelectGender.scss';
 import Progress2 from '../../../assets/MainPage/Progress2.png'
 import Man from '../../../assets/MainPage/Man.png'
@@ -6,9 +6,7 @@ import Woman from '../../../assets/MainPage/Woman.png'
 import ActiveMan from '../../../assets/MainPage/ActiveMan.png'
 import ActiveWoman from '../../../assets/MainPage/ActiveWoman.png'
 
-const SelectGender = () => {
-    const [gender, setGender] = useState();
-
+const SelectGender = ({gender, setGender, onClick}) => {
     return (
         <div className='SelectGender_Container'>
             <div className='SelectGender_Wrapper'>
@@ -21,7 +19,7 @@ const SelectGender = () => {
                     {gender === '남성' ? <img src={ActiveMan} alt='' onClick={()=>setGender()}/> : <img src={Man} alt='' onClick={()=>setGender('남성')}/>}
                     {gender === '여성' ? <img src={ActiveWoman} alt='' onClick={()=>setGender()}/> : <img src={Woman} alt='' onClick={()=>setGender('여성')}/>}
                 </div>
-                <button className='SelectGender_Btn'>다음</button>
+                <button className='SelectGender_Btn' onClick={onClick}>다음</button>
             </div>
         </div>
     );

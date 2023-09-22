@@ -12,7 +12,6 @@ const ResultModalContainer = ({ result, setShowResultModal }) => {
     return (
         <ResultModal
             result={result}
-            setShowResultModal={setShowResultModal}
             handleCloseModal={handleCloseModal}
             handleRestartCamera={handleRestartCamera}
         />

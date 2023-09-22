@@ -18,7 +18,8 @@ const Camera = ({
     showServerModal, 
     showResultModal, 
     setShowResultModal,
-    navigate
+    navigate,
+    result
 }) => {
 
     return (
@@ -56,7 +57,7 @@ const Camera = ({
                         <img src={Progress3} alt='Progress3' className='Camera_Progress'/>
                     </>
                 }
-                {showResultModal && <ResultModalContainer result = {1} setShowResultModal={setShowResultModal}/>}
+                {showResultModal && <ResultModalContainer result = {result} setShowResultModal={setShowResultModal}/>}
             </div>
         </div>
     );

@@ -1,21 +1,24 @@
 import React, {useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
-import Camera from '../../presentation/CameraPage/Camera';
-import { uploadPhotos } from '../../../api/postPair';
+import MainPage from '../../../pages/MainPage';
+import { postFashion } from '../../../api/postFashion';
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
-const CameraContainer = () => {
-    const [captures, setCaptures] = useState([]);
+const MainPageContainer = () => {
+    const [gender, setGender] = useState();
     const [showServerModal, setShowServerModal] = useState(false);
-    const [showResultModal, setShowResultModal] = useState(false);
     const [result, setResult] = useState();
     const navigate = useNavigate();
-    const uploadMutation = useMutation(uploadPhotos, {
-        onSuccess: (data) => {
-          setResult(data.data.result);
-        },
-      });
 
+    const uploadData = useMutation(postFashion, {
+        onSuccess: (data) => {
+            setResult(data);
+            console.log(data);
+            console.log(result);
+          },
+    })
+
+    const [captures, setCaptures] = useState([]);
     const webcamRef = React.useRef(null);
     const capturePhoto = () => {
         const imageSrc = webcamRef.current.getScreenshot();
@@ -27,35 +30,33 @@ const CameraContainer = () => {
           });
       };  
 
+
     useEffect(() => {
-        let serverTimer, resultTimer;
-        if (captures.length === 2) {
+        let serverTimer;
+        if (captures.length === 1) {
             setShowServerModal(true);
             serverTimer = setTimeout(() => {
                 setShowServerModal(false);
-                setShowResultModal(true); // Show ResultModal right after ServerModal disappears
             }, 3000);
-            uploadMutation.mutate(captures);
-
+            navigate('/main/gender')
         }
         return () => { 
             clearTimeout(serverTimer); 
-            clearTimeout(resultTimer); // Clear both timers if the component unmounts
         };
     }, [captures]);
 
+
     return (
-        <Camera 
+        <MainPage
+            gender={gender}
+            setGender={setGender}
             webcamRef={webcamRef}
             capturePhoto={capturePhoto}
             captures={captures}
             showServerModal={showServerModal}
-            showResultModal={showResultModal}
-            setShowResultModal={setShowResultModal}  
-            navigate={navigate}
-            result={result}
+            uploadData={uploadData}
         />
     );
 };
 
-export default CameraContainer;
+export default MainPageContainer;

@@ -1,4 +1,4 @@
-import React, {Suspense, lazy} from 'react';
+import React, {Suspense, lazy, useState} from 'react';
 import { useRoutes } from 'react-router-dom';
 import Skelethone from '../component/presentation/MainPage/Skelethone';
 const StartRenderingContainer = lazy(() => import("../component/container/common/StartRenderingContainer"));
@@ -6,7 +6,8 @@ const MainCameraContainer = lazy(() => import('../component/container/MainPage/M
 const ResultSockColorContainer = lazy(() => import('../component/container/MainPage/ResultSockColorContainer'));
 const SelectGenderContainer = lazy(() => import('../component/container/MainPage/SelectGenderContainer'));
 
-export default function MainPage() {
+export default function MainPage({gender, setGender, webcamRef, capturePhoto, captures, showServerModal, uploadData}) {
+
   let element = useRoutes([
     {
       path: '/',
@@ -20,7 +21,12 @@ export default function MainPage() {
       path: 'shot',
       element: (
         <Suspense fallback={<></>}>
-          <MainCameraContainer />
+          <MainCameraContainer 
+            webcamRef={webcamRef}
+            capturePhoto={capturePhoto}
+            captures={captures}
+            showServerModal={showServerModal}
+          />
         </Suspense>
       ),
     },
@@ -36,7 +42,12 @@ export default function MainPage() {
       path: 'gender',
       element: (
         <Suspense fallback={<></>}>
-          <SelectGenderContainer />
+          <SelectGenderContainer
+            gender={gender}
+            setGender={setGender}
+            uploadData={uploadData}
+            captures={captures}
+          />
         </Suspense>
       ),
     },
