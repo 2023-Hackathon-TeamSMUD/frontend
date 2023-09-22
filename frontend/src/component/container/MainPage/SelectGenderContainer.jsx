@@ -1,13 +1,23 @@
 import React from 'react';
 import SelectGender from '../../presentation/MainPage/SelectGender';
 import { useNavigate } from 'react-router-dom';
+import { useMutation } from 'react-query';
+import { postFashion } from '../../../api/postFashion';
 
-const SelectGenderContainer = ({gender, setGender, uploadData, captures}) => {
+const SelectGenderContainer = ({gender, setGender, setResult, captures}) => {
     const navigate = useNavigate();
 
+    const uploadData = useMutation(postFashion, {
+        onSuccess: (data) => {
+            setResult(data);
+            console.log(data);
+          },
+    })
+
     const onClick = () => {
-        console.log(captures, gender);
-        uploadData.mutate(captures, gender);
+        const arr = [captures[0], gender];
+        console.log(arr);
+        uploadData.mutate(arr);
         navigate('/storage');
     }
     return (

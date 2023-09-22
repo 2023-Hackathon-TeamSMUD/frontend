@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-export const postFashion = async (photos, gender) => {
+export const postFashion = async (arr) => {
     const formData = new FormData();
-  
-    formData.append('imageFile', photos[0]);
-    console.log(gender);
-    const stylingRequestDto = JSON.stringify({ gender });
+    formData.append('imageFile', arr[0]);
+    const stylingRequestDto = JSON.stringify(arr[1]);
     formData.append('stylingRequestDto', stylingRequestDto);
   
     for(let pair of formData.entries()) {
