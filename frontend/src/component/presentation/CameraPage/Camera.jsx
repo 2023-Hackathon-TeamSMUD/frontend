@@ -11,8 +11,6 @@ import Progress3 from "../../../assets/CameraPage/Progress3.svg";
 import '../../../styles/components/CameraPage/Camera.scss'
 import ResultModalContainer from '../../container/CameraPage/ResultModalContainer';
 
-
-
 const Camera = ({
     webcamRef, 
     capturePhoto, 
