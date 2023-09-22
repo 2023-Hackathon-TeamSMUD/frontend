@@ -10,7 +10,13 @@ const CameraContainer = () => {
 
     const capturePhoto = () => {
         const imageSrc = webcamRef.current.getScreenshot();
-        setCaptures(prevState => [...prevState, imageSrc]);
+        fetch(imageSrc)
+        .then(res => res.blob())
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            setCaptures(prevState => [...prevState, url]);
+            console.log(url); // This will now log the blob URL instead of the Base64 data
+        });
     };    
 
     useEffect(() => {
