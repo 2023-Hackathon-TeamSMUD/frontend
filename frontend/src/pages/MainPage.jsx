@@ -5,6 +5,7 @@ const StartRenderingContainer = lazy(() => import("../component/container/common
 const MainCameraContainer = lazy(() => import('../component/container/MainPage/MainCameraContainer'));
 const ResultSockColorContainer = lazy(() => import('../component/container/MainPage/ResultSockColorContainer'));
 const SelectGenderContainer = lazy(() => import('../component/container/MainPage/SelectGenderContainer'));
+const Cody = lazy(() => import('../component/presentation/MainPage/Cody'));
 
 export default function MainPage({
   gender,
@@ -89,6 +90,17 @@ export default function MainPage({
             setGender={setGender}
             setResult={setResult}
             captures={captures}
+            showServerModal={showServerModal}
+          />
+        </Suspense>
+      ),
+    },
+    {
+      path: 'cody',
+      element: (
+        <Suspense fallback={<></>}>
+          <Cody
+            result={result}
           />
         </Suspense>
       ),

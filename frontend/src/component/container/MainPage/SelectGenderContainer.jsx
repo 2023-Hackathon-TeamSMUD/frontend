@@ -3,14 +3,16 @@ import SelectGender from '../../presentation/MainPage/SelectGender';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { postFashion } from '../../../api/postFashion';
+import ServerMdoal from '../../presentation/MainPage/ServerModal'
 
 const SelectGenderContainer = ({gender, setGender, setResult, captures}) => {
     const navigate = useNavigate();
 
     const uploadData = useMutation(postFashion, {
         onSuccess: (data) => {
-            setResult(data);
-            console.log(data);
+            setResult(data.data);
+            console.log(data.data);
+            navigate('/main/cody');
           },
     })
 
@@ -18,8 +20,11 @@ const SelectGenderContainer = ({gender, setGender, setResult, captures}) => {
         const arr = [captures[0], gender];
         console.log(arr);
         uploadData.mutate(arr);
-        navigate('/storage');
     }
+
+    if (uploadData.isLoading) {
+        return <ServerMdoal/>;
+      }
     return (
         <SelectGender 
             gender={gender}

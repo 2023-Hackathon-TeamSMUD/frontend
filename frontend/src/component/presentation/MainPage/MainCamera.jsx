@@ -4,9 +4,8 @@ import Aim from "../../../assets/CameraPage/Aim.svg";
 import Shot from "../../../assets/CameraPage/Shot.svg";
 import '../../../styles/components/CameraPage/Camera.scss'
 import Heart from "../../../assets/CameraPage/heart.svg";
-import ServerModal from '../MainPage/ServerModal';
 
-const MainCamera = ({navigate, webcamRef, capturePhoto, captures, showServerModal}) => {
+const MainCamera = ({navigate, webcamRef, capturePhoto}) => {
     
     return (
         <div className='Camera_Container'>
@@ -25,7 +24,6 @@ const MainCamera = ({navigate, webcamRef, capturePhoto, captures, showServerModa
                 <img src={Heart} alt='Heart' className='Camera_Heart' onClick={()=>navigate('/')}/>
                 <img src={Shot} alt='Shot' className='Camera_Shot' onClick={capturePhoto}/>
             </div>
-            {showServerModal && <ServerModal />}
         </div>
     );
 };
