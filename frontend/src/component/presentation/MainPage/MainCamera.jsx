@@ -21,7 +21,7 @@ const MainCamera = ({navigate, webcamRef, capturePhoto}) => {
                     className='Camera_Layout'
                 />
                 <img src={Aim} alt='aim' className='Camera_Aim' />
-                <img src={Heart} alt='Heart' className='Camera_Heart' onClick={()=>navigate('/')}/>
+                <img src={Heart} alt='Heart' className='Camera_Heart' onClick={()=>navigate('/storage')}/>
                 <img src={Shot} alt='Shot' className='Camera_Shot' onClick={capturePhoto}/>
             </div>
         </div>

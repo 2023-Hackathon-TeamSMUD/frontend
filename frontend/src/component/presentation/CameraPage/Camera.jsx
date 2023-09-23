@@ -36,7 +36,7 @@ const Camera = ({
                     className='Camera_Layout'
                 />
                 <img src={Aim} alt='aim' className='Camera_Aim' />
-                <img src={Heart} alt='Heart' className='Camera_Heart' />
+                <img src={Heart} alt='Heart' className='Camera_Heart' onClick={()=>navigate('/storage')}/>
                 <img src={Storage} alt='Storage' className='Camera_Storage' onClick={()=>navigate('/main')} />
                 <img src={Shot} alt='Shot' className='Camera_Shot' onClick={capturePhoto}/>
                 {captures.length === 0 && 

@@ -5,27 +5,32 @@ import Top from '../../../assets/MainPage/Top.png'
 import Pant from '../../../assets/MainPage/Pants.png'
 import Shoe from '../../../assets/MainPage/Shoe.png'
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const Cody = ({result}) => {
+
     const navigate = useNavigate();
     const [isSaved, setIsSaved] = useState(false);
     const [showAlert, setShowAlert] = useState(false); // 새로운 상태 변수 추가
-    console.log(result)
     const handleSaveResult = () => {
-        if (isSaved ===  false) {
-            localStorage.setItem('myResult', JSON.stringify(result));
-            setIsSaved(true);  // 저장 완료 후 isSaved 상태 변경
-            setShowAlert(true); // 저장 완료 후 showAlert 상태 변경
-            setTimeout(() => { // 3초 후 showAlert을 false로 설정
-                setShowAlert(false);
-            }, 100000);
-        } else {
-            alert('이미 저장된 코디입니다!');
+        if (isSaved === false) {
+          const key = uuidv4();
+          // Check if the key is not one of the unwanted ones
+          if (!['iconify-count', 'iconify0', 'iconify-version'].includes(key) && !localStorage.getItem(`${key}`)) {
+            localStorage.setItem(`${key}`, JSON.stringify(result));
+            setIsSaved(true);
+            setShowAlert(true);
+            setTimeout(() => {
+              setShowAlert(false);
+            }, 3000);
+          }
         }
-      };
-      console.log(JSON.parse(localStorage.getItem('myResult')))
-      console.log(localStorage.length)
-    //localStorage.clear();
+    };
+    localStorage.removeItem('iconify-count');
+    localStorage.removeItem('iconify0');
+    localStorage.removeItem('iconify-version');
+    
+    console.log(localStorage.length)
 
     return (
         <div className='Cody_Container'>
@@ -50,7 +55,7 @@ const Cody = ({result}) => {
                     </div>
                 </div>
                 <div className='Cody_Recommend_Btn_Layout'>
-                    <button className='Cody_Recommend_Btn1' onClick = {()=>navigate('/')}>종료하기</button>
+                    <button className='Cody_Recommend_Btn1' onClick = {()=>navigate('/storage')}>종료하기</button>
                     <button className='Cody_Recommend_Btn2'  disabled={isSaved} onClick = {handleSaveResult}>저장하기</button>
                 </div>
 

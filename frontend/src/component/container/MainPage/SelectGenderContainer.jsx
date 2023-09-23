@@ -14,17 +14,26 @@ const SelectGenderContainer = ({gender, setGender, setResult, captures}) => {
             console.log(data.data);
             navigate('/main/cody');
           },
+          onError: (err) => {
+            alert('잠시후 시도해 주세요!');
+            console.error(err);
+          },
     })
 
     const onClick = () => {
-        const arr = [captures[0], gender];
-        console.log(arr);
-        uploadData.mutate(arr);
+        if(gender === undefined){
+            alert('성별을 선택해주세요!')
+        } else {
+            const arr = [captures[0], gender];
+            console.log(arr);
+            uploadData.mutate(arr);
+        }
     }
 
     if (uploadData.isLoading) {
         return <ServerMdoal/>;
-      }
+    }
+
     return (
         <SelectGender 
             gender={gender}

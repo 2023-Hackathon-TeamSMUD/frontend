@@ -29,28 +29,12 @@ export default function MainPage({
         });
         serverTimer = setTimeout(() => {
           navigate('/main/gender')
-          }, 3000);
+          }, 1500);
       return () => { 
           clearTimeout(serverTimer); 
       };
     };  
-    useEffect(() => {
-      console.log(captures);
-    }, [captures]);
 
-
-  useEffect(() => {
-      let serverTimer;
-      if (captures.length === 1) {
-          setShowServerModal(true);
-          serverTimer = setTimeout(() => {
-              setShowServerModal(false);
-          }, 3000);
-      }
-      return () => { 
-          clearTimeout(serverTimer); 
-      };
-  }, [captures]);
   let element = useRoutes([
     {
       path: '/',
