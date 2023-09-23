@@ -10,6 +10,7 @@ import Progress2 from "../../../assets/CameraPage/Progress2.svg";
 import Progress3 from "../../../assets/CameraPage/Progress3.svg";
 import '../../../styles/components/CameraPage/Camera.scss'
 import ResultModalContainer from '../../container/CameraPage/ResultModalContainer';
+import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
 
 const Camera = ({
     webcamRef, 
@@ -21,7 +22,7 @@ const Camera = ({
     navigate,
     result
 }) => {
-
+    const speak = useTextToSpeech();
     return (
         <div className='Camera_Container'>
             <div className='Camera_Wrapper'>
@@ -41,12 +42,14 @@ const Camera = ({
                 <img src={Shot} alt='Shot' className='Camera_Shot' onClick={capturePhoto}/>
                 {captures.length === 0 && 
                     <>
+                        {speak("한쪽 양말을 먼저 촬영해 주세요!")}
                         <div className='Shot_Text'>한쪽 양말을 먼저 촬영해 주세요!</div>
                         <img src={Progress1} alt='Progress1' className='Camera_Progress'/>
                     </>
                 }
                 {captures.length === 1 && 
                     <>
+                        {speak("다른 쪽 양말을 촬영해 주세요!")}
                         <div className='Shot_Text'>다른 쪽 양말을 촬영해 주세요!</div>
                         <img src={Progress2} alt='Progress1' className='Camera_Progress'/>
                     </>
@@ -57,7 +60,7 @@ const Camera = ({
                         <img src={Progress3} alt='Progress3' className='Camera_Progress'/>
                     </>
                 }
-                {showResultModal && <ResultModalContainer result = {result} setShowResultModal={setShowResultModal}/>}
+                {result !== undefined && showResultModal && <ResultModalContainer result = {result} setShowResultModal={setShowResultModal}/>}
             </div>
         </div>
     );

@@ -5,8 +5,10 @@ import Man from '../../../assets/MainPage/Man.png'
 import Woman from '../../../assets/MainPage/Woman.png'
 import ActiveMan from '../../../assets/MainPage/ActiveMan.png'
 import ActiveWoman from '../../../assets/MainPage/ActiveWoman.png'
+import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
 
 const SelectGender = ({gender, setGender, onClick}) => {
+    const speak = useTextToSpeech();
     return (
         <div className='SelectGender_Container'>
             <div className='SelectGender_Wrapper'>
@@ -14,6 +16,7 @@ const SelectGender = ({gender, setGender, onClick}) => {
                 <div className='SelectGender_TextBox_LayOut'>
                     <div className='SelectGender_TextBox1'>성별이 어떻게 되시나요?</div>
                     <div className='SelectGender_TextBox2'>성별에 맞춰 코디를 알려드립니다!</div>
+                    {speak('성별이 어떻게 되시나요? 성별에 맞춰 코디를 알려드립니다!')}
                 </div>
                 <div className='SelectGender_SelectLayOut'>
                     {gender === '남성' ? <img src={ActiveMan} alt='' onClick={()=>setGender()}/> : <img src={Man} alt='' onClick={()=>setGender('남성')}/>}

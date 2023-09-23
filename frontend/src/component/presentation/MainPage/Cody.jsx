@@ -6,6 +6,7 @@ import Pant from '../../../assets/MainPage/Pants.png'
 import Shoe from '../../../assets/MainPage/Shoe.png'
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
 
 const Cody = ({result}) => {
 
@@ -32,13 +33,16 @@ const Cody = ({result}) => {
     
     console.log(localStorage.length)
 
+    const speak = useTextToSpeech();
+
     return (
         <div className='Cody_Container'>
             <div className='Cody_Wrapper'>
                 <img src={Progress3} alt='Progress' className='SelectGender_Progress'/>
                 <div className='Cody_TextBox_LayOut'>
                     <div className='Cody_TextBox1'>코디를 추천해드릴게요!</div>
-                    <div className='Cody_TextBox2'>흰색 양말에 어울리는 상의, 하의, 신발입니다.</div>
+                    <div className='Cody_TextBox2'>{result.sockColor}양말에 어울리는 상의, 하의, 신발입니다.</div>
+                    {speak(`코디를 추천해드릴게요! ${result.sockColor}양말에 어울리는 상의, 하의, 신발입니다.`)}
                 </div>
                 <div className='Cody_Recommend_LayOut'>
                     <div className='Cody_Recommend_Box'>
@@ -53,6 +57,7 @@ const Cody = ({result}) => {
                         <img src={Shoe} alt='' />
                         {result.stylings[0].shoes}
                     </div>
+                    {speak(`상의는 ${result.stylings[0].top}, 하의는 ${result.stylings[0].pants}, 신발은 ${result.stylings[0].shoes}`)}
                 </div>
                 <div className='Cody_Recommend_Btn_Layout'>
                     <button className='Cody_Recommend_Btn1' onClick = {()=>navigate('/storage')}>종료하기</button>

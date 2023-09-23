@@ -132,7 +132,7 @@ const StoragePage = () => {
                     <img src={Delete} alt='' onClick={handleDelete} className='Storage_Delete_img'/>
                     <Swiper {...params} key={codyDatas.length}>
                         {codyDatas.map((data, index) => (
-                            <div key={data.index}>
+                            <div key={index}>
                                 <img src={data.imgUrl} alt='' />
                             </div>
                         ))}

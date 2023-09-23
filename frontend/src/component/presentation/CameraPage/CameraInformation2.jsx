@@ -3,8 +3,10 @@ import Heart from "../../../assets/CameraPage/heart.svg";
 import Storage from "../../../assets/CameraPage/Storage.svg";
 import '../../../styles/components/CameraPage/CameraInformation2.scss';
 import '../../../styles/components/CameraPage/Camera.scss'
+import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
 
 const CameraInformation2 = ({isOpen, setIsOpen}) => {
+    const speak = useTextToSpeech();
     const onClick = () => {
         let newState = [false, false]
         setIsOpen(newState);
@@ -23,6 +25,8 @@ const CameraInformation2 = ({isOpen, setIsOpen}) => {
                 <img src={Heart} alt='Heart' className='Camera_Heart' />
                 <img src={Storage} alt='Storage' className='Camera_Storage' />
             </div>
+            {speak('상단 우측 버튼으로 저장한 코디를 확인할 수 있어요!')}
+            {speak('하단 좌측 버튼으로 코디를 추천받을 수 있어요!')}
         </div>
     );
 };

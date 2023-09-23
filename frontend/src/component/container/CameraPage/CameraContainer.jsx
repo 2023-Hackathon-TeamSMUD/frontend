@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Camera from '../../presentation/CameraPage/Camera';
 import { uploadPhotos } from '../../../api/postPair';
 import { useMutation } from 'react-query';
+import ServerModal from '../../presentation/CameraPage/ServerModal';
+import { useTextToSpeech } from '../../../hooks/useTextToSpeech';
 
 const CameraContainer = () => {
     const [captures, setCaptures] = useState([]);
@@ -10,11 +12,21 @@ const CameraContainer = () => {
     const [showResultModal, setShowResultModal] = useState(false);
     const [result, setResult] = useState();
     const navigate = useNavigate();
+    const speak = useTextToSpeech();
     const uploadMutation = useMutation(uploadPhotos, {
         onSuccess: (data) => {
           setResult(data.data.result);
         },
+        onError: (err) => {
+            speak('잠시후 시도해 주세요!')
+            alert('잠시후 시도해 주세요!');
+            console.error(err);
+            setInterval(() => {
+                window.location.reload();
+            }, 3000)
+          },
       });
+
 
     const webcamRef = React.useRef(null);
     const capturePhoto = () => {
@@ -43,6 +55,10 @@ const CameraContainer = () => {
             clearTimeout(resultTimer); // Clear both timers if the component unmounts
         };
     }, [captures]);
+
+    if(uploadMutation.isLoading) {
+        return <ServerModal />
+    }
 
     return (
         <Camera 
